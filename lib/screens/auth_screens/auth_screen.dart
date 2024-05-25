@@ -49,13 +49,23 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 SizedBox(
                   height: 25,
-                ), 
+                ),
                 TextField(
                   cursorColor: Colors.black,
                   decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.email_outlined ),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                      border: OutlineInputBorder()),
+                    fillColor: Colors.grey,
+                    filled: true,
+                    hintText: "Email Address",
+                    hintStyle: GoogleFonts.poppins(color: Colors.white),
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                      color: Colors.white,
+                    ),
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide.none,
+                        borderRadius: BorderRadius.circular(9)),
+                  ),
                 ),
               ],
             ),

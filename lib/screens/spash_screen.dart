@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:apple/screens/auth_screens/auth_screen.dart';
 import 'package:apple/utils/custome_navigater.dart';
 import 'package:flutter/material.dart';
