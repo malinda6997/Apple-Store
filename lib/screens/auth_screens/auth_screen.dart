@@ -14,6 +14,7 @@ class _AuthScreenState extends State<AuthScreen> {
     final size = MediaQuery.sizeOf(context);
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             width: size.width,
@@ -28,11 +29,36 @@ class _AuthScreenState extends State<AuthScreen> {
                     fit: BoxFit.cover)),
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
-          Text(
-            "Create Account",
-            style: GoogleFonts.poppins(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Create Account",
+                  style: GoogleFonts.poppins(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black),
+                ),
+                Text(
+                  "Sign up your account",
+                  style: GoogleFonts.poppins(fontSize: 15, color: Colors.grey),
+                ),
+                SizedBox(
+                  height: 25,
+                ), 
+                TextField(
+                  cursorColor: Colors.black,
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.email_outlined ),
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                      border: OutlineInputBorder()),
+                ),
+              ],
+            ),
           ),
         ],
       ),
