@@ -1,7 +1,8 @@
 import 'package:apple/components/Buttons/custome_button.dart';
 import 'package:apple/screens/auth_screens/widgets/custome_text_field.dart';
+import 'package:apple/screens/home_screens/home_screen.dart';
+import 'package:apple/utils/custome_navigater.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -85,6 +86,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   CustomeButton(
                     size: size,
                     text: isSignUp ? 'Sign Up' : 'Sign In',
+                    ontap: () {
+                      CustomeNavigator.push(context, HomeScreen());
+                    },
                   ),
                   SizedBox(
                     height: 10,
