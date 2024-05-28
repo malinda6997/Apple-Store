@@ -11,19 +11,23 @@ class demoData {
   static List<catagory> catagories = [
     catagory(
       name: 'Iphones',
-      img: 'assets/images/iphone.jpg',
+      img: 'assets/images/iphone.png',
     ),
     catagory(
       name: 'Mac',
-      img: 'assets/images/mac.jpg',
+      img: 'assets/images/mac.png',
     ),
     catagory(
       name: 'Ipad',
-      img: 'assets/images/ipad.jpg',
+      img: 'assets/images/Ipad (2).png',
     ),
     catagory(
       name: 'Watch',
-      img: 'assets/images/watch.jpg',
+      img: 'assets/images/watch.png',
+    ),
+    catagory(
+      name: 'Airpods',
+      img: 'assets/images/airpod.png',
     ),
   ];
 }

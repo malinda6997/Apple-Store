@@ -1,8 +1,8 @@
-import 'package:apple/data/demo_data.dart';
 import 'package:apple/screens/home_screens/widgets/carousel_slider.dart';
+import 'package:apple/screens/home_screens/widgets/categories_card.dart';
 import 'package:apple/screens/home_screens/widgets/custome_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,32 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(height: 18),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: List.generate(
-                      demoData.catagories.length,
-                      (index) => Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: SizedBox(
-                              width: 120,
-                              height: 120,
-                              child: Stack(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.bottomCenter,
-                                    child: Container(
-                                      color: Colors.red,
-                                      width: 200,
-                                      height: 300,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          )),
-                ),
-              ),
+              categories_card(),
             ],
           ),
         ),
