@@ -13,7 +13,7 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-  bool isSignUp = true;
+  String Type = 'signup';
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.sizeOf(context);
@@ -43,16 +43,22 @@ class _AuthScreenState extends State<AuthScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    isSignUp ? "Create Account" : "Sign In",
+                    Type == 'signup'
+                        ? "Create Account"
+                        : Type == 'signin'
+                            ? "Sign In"
+                            : 'Forgot Password',
                     style: GoogleFonts.poppins(
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
                         color: Colors.black),
                   ),
                   Text(
-                    isSignUp
+                    Type == 'signup'
                         ? "Sign up your account"
-                        : "Sign in to your account",
+                        : Type == 'signin'
+                            ? "Sign in to your account"
+                            : "Please enter your email here to receive a link to change your password",
                     style:
                         GoogleFonts.poppins(fontSize: 15, color: Colors.grey),
                   ),
@@ -61,19 +67,25 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   CustomeTextField(
                       hint: 'Email Address', frefixIcon: Icons.email_rounded),
-                  CustomeTextField(
-                    hint: 'Password',
-                    frefixIcon: Icons.lock_rounded,
-                    isPassword: true,
-                  ),
-                  isSignUp
+                  Type != 'forgotPassword'
+                      ? CustomeTextField(
+                          hint: 'Password',
+                          frefixIcon: Icons.lock_rounded,
+                          isPassword: true,
+                        )
+                      : SizedBox(),
+                  Type != 'signin'
                       ? SizedBox()
                       : Align(
                           alignment: Alignment.topRight,
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                setState(() {
+                                  Type = 'forgotPassword';
+                                });
+                              },
                               child: Text('Forget Password?'))),
-                  isSignUp
+                  Type == 'signup'
                       ? CustomeTextField(
                           hint: 'Confirm Password',
                           frefixIcon: Icons.lock_rounded,
@@ -85,7 +97,11 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   CustomeButton(
                     size: size,
-                    text: isSignUp ? 'Sign Up' : 'Sign In',
+                    text: Type == 'signup'
+                        ? 'Sign Up'
+                        : Type == 'signin'
+                            ? 'Sign In'
+                            : 'Sent Email',
                     ontap: () {
                       CustomeNavigator.push(context, HomeScreen());
                     },
@@ -95,15 +111,25 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   CustomeButton(
                     size: size,
-                    text: isSignUp ? 'Sign In' : 'Sign Up',
+                    text: Type == 'signup'
+                        ? 'Sign In'
+                        : Type == 'signin'
+                            ? 'Sign Up'
+                            : 'Cancel',
                     BgColor: Colors.white,
                     textColor: Colors.black,
                     ontap: () {
                       setState(() {
-                        isSignUp = !isSignUp;
+                        if (Type == 'signin') {
+                          Type = 'signup';
+                        } else if (Type == 'signup') {
+                          Type = 'signin';
+                        } else if (Type == 'forgotPassword') {
+                          Type = 'signup';
+                        }
                       });
                     },
-                  )
+                  ),
                 ],
               ),
             ),
