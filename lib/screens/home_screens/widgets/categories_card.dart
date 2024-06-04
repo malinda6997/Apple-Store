@@ -11,6 +11,7 @@ class categories_card extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
+      physics: BouncingScrollPhysics(),
       child: Row(
         children: List.generate(
             demoData.catagories.length,
